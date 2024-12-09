@@ -1,13 +1,14 @@
-import { useCallback, useContext } from 'react';
+import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
+import { useCallback, useContext, useState } from 'react';
+import GlobalContext from '@/core/context/global';
 import { login } from '@/core/repository/authen';
 import { getUser } from '@/core/repository/user';
-import GlobalContext from '@/core/context/global';
-import { AxiosError } from 'axios';
 
 export function useSignIn() {
   const { alert, setUser } = useContext(GlobalContext);
   const { push } = useRouter();
+  const [isSigningIn, setIsSigningIn] = useState(false);
 
   const signIn = useCallback(async (username: string) => {
     if (username.length < 3) {
@@ -17,6 +18,7 @@ export function useSignIn() {
       });
       return;
     }
+    setIsSigningIn(true);
     try {
       const { accessToken, refreshToken } = await login(username);
       localStorage.setItem('accessToken', accessToken);
@@ -31,10 +33,13 @@ export function useSignIn() {
         err = `${error.response.data.error}`;
       }
       alert({ message: err, severity: 'error' });
+    } finally {
+      setIsSigningIn(false);
     }
   }, []);
 
   return {
     signIn,
+    isSigningIn,
   };
 }
