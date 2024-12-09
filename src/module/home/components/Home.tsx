@@ -26,6 +26,21 @@ export default function Home() {
     );
   };
 
+  const highlight = (search: string) => {
+    const regex = new RegExp(search, 'gi');
+    const elements = document.getElementsByClassName('post');
+    for (const element of elements) {
+      const text = element.innerHTML.replace(
+        /(<mark class="highlight bg-golden opacity-50">|<\/mark>)/gim,
+        '',
+      );
+      element.innerHTML = text.replace(
+        regex,
+        '<mark class="highlight bg-golden opacity-50">$&</mark>',
+      );
+    }
+  };
+
   useEffect(() => {
     const params = new URLSearchParams();
     if (search.trim()) {
@@ -42,6 +57,10 @@ export default function Home() {
     router.replace(`?${params.toString()}`);
     fetchPosts({ search, communityId: community?.id });
   }, [search, community]);
+
+  useEffect(() => {
+    highlight(search.trim());
+  }, [search, posts]);
 
   return (
     <div className="pt-12 px-4 lg:pt-0 lg:px-0">
@@ -104,10 +123,10 @@ export default function Home() {
                   {post.communityName}
                 </div>
                 <div className="font-semibold text-base line-clamp-1">
-                  {post.title}
+                  <p className="post">{post.title}</p>
                 </div>
                 <div className="text-sm line-clamp-2 mb-[10px]">
-                  {post.content}
+                  <p className="post">{post.content}</p>
                 </div>
                 <div className="flex items-center gap-1 text-grey-300 stroke-grey-300">
                   {MessageIcon}
