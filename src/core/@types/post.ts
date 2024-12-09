@@ -14,5 +14,5 @@ export interface Post {
 
 export interface FilterPost {
   search?: string;
-  communityId?: string;
+  communityId?: number;
 }

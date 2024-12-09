@@ -7,6 +7,7 @@ export async function listPosts(params: FilterPost) {
     url: '/post',
     method: 'GET',
     params,
+    signalID: 'LIST_POSTS',
   });
   if (status === HttpStatusCode.Ok) {
     return data;
