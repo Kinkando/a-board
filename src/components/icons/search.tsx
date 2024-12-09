@@ -9,9 +9,9 @@ export const SearchIcon = (
     <path
       d="M18.4658 18.4219L14.8408 14.7969M16.7992 10.0885C16.7992 13.7704 13.8144 16.7552 10.1325 16.7552C6.45059 16.7552 3.46582 13.7704 3.46582 10.0885C3.46582 6.40664 6.45059 3.42188 10.1325 3.42188C13.8144 3.42188 16.7992 6.40664 16.7992 10.0885Z"
       stroke="#5B5B5B"
-      stroke-width="1.66667"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.66667"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
