@@ -20,6 +20,8 @@ export default function Home() {
   const { posts, communities, fetchPosts } = usePost();
   const router = useRouter();
 
+  const [isSearch, setIsSearch] = useState(false);
+
   const chooseCommunity = (cmt: Community) => {
     setCommunity((community) =>
       cmt.id === community.id ? undefinedCommunity : cmt,
@@ -65,18 +67,44 @@ export default function Home() {
   return (
     <div className="pt-12 px-4 lg:pt-0 lg:px-0">
       {/* Toolbar Section */}
-      <div className="flex justify-between items-center h-10 gap-5">
-        <div className="w-full">
+      <div className="flex max-[340px]:flex-col justify-between items-center min-h-10 gap-5">
+        <div
+          className={
+            'stroke-[#5B5B5B] w-full sm:hidden max-[340px]:hidden' +
+            (isSearch ? ' hidden' : '')
+          }
+        >
+          <div
+            className="w-fit cursor-pointer"
+            onClick={() => {
+              setIsSearch(true);
+            }}
+          >
+            {SearchIcon}
+          </div>
+        </div>
+
+        <div
+          className={
+            'w-full h-10 max-[340px]:block' +
+            (!isSearch ? ' hidden sm:block' : '')
+          }
+        >
           <TextInput
             placeholder="Search"
             value={search}
             className="input-search"
             onChange={(e) => setSearch(e.target.value)}
             icon={() => <div className="stroke-[#5B5B5B]">{SearchIcon}</div>}
+            onBlur={() => setIsSearch(false)}
           />
         </div>
 
-        <div className="text-black">
+        <div
+          className={
+            'text-black' + (isSearch ? ' min-[340px]:hidden sm:block' : '')
+          }
+        >
           <Dropdown label="Community" inline>
             {!communities.length && (
               <Dropdown.Item className="inactive">
@@ -102,7 +130,12 @@ export default function Home() {
           </Dropdown>
         </div>
 
-        <Button className="button-success no-border animate whitespace-nowrap">
+        <Button
+          className={
+            'button-success no-border animate whitespace-nowrap max-[340px]:w-full h-10' +
+            (isSearch ? ' min-[340px]:hidden sm:block' : '')
+          }
+        >
           Create +
         </Button>
       </div>

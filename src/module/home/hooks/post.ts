@@ -25,9 +25,10 @@ export function usePost() {
 
   const fetchPosts = async ({ communityId, search }: FilterPost) => {
     try {
+      search = !search || search.trim().length < 2 ? undefined : search.trim();
       const posts = await listPosts({
         communityId: communityId || undefined,
-        search: search?.trim() || undefined,
+        search,
       });
       setPosts(posts ?? []);
 
