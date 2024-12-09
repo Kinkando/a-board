@@ -39,7 +39,7 @@ export interface Comment {
   userId: string;
   username: string;
   userImageUrl?: string;
-  createdAt?: Date;
+  createdAt: Date;
   updatedAt?: Date;
   editable?: boolean;
   deletable?: boolean;
