@@ -31,7 +31,7 @@ export default function RootLayout({
         <PublicEnvScript />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-grey-100`}
       >
         <GlobalContextProvider>{children}</GlobalContextProvider>
       </body>

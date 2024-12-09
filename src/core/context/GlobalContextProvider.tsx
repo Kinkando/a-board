@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Alert } from '@/core/@types/alert';
 import GlobalContext from '@/core/context/global';
 import { useUser } from '@/core/hooks/user';
+import BaseLayout from '@/components/layout/BaseLayout';
 import AlertComponent from '@/components/ui/Alert';
 
 export default function GlobalContextProvider({
@@ -42,7 +43,7 @@ export default function GlobalContextProvider({
         {...alert}
         onDismiss={() => setAlert((alert) => ({ ...alert, isOpen: false }))}
       />
-      {children}
+      <BaseLayout pathname={pathname}>{children}</BaseLayout>
     </GlobalContext.Provider>
   );
 }
