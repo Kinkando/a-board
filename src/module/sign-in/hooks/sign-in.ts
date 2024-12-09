@@ -10,6 +10,13 @@ export function useSignIn() {
   const { push } = useRouter();
 
   const signIn = useCallback(async (username: string) => {
+    if (username.length < 3) {
+      alert({
+        message: 'Please enter username at least 3 characters',
+        severity: 'warning',
+      });
+      return;
+    }
     try {
       const { accessToken, refreshToken } = await login(username);
       localStorage.setItem('accessToken', accessToken);
