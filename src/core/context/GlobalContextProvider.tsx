@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Alert } from '@/core/@types/alert';
 import GlobalContext from '@/core/context/global';
 import { useUser } from '@/core/hooks/user';
-import AlertComponent from '@/components/shared/Alert';
+import AlertComponent from '@/components/ui/Alert';
 
 export default function GlobalContextProvider({
   children,
