@@ -28,3 +28,18 @@ export async function getPostDetail(postId: string) {
   }
   throw Error(error);
 }
+
+export async function createComment(postId: string, comment: string) {
+  const { data, status, error } = await client<{
+    post: PostDetail;
+    comments: Comment[];
+  }>({
+    url: `/post/${postId}/comment`,
+    method: 'POST',
+    data: { comment },
+  });
+  if (status === HttpStatusCode.Ok) {
+    return data;
+  }
+  throw Error(error);
+}

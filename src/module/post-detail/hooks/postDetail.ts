@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Comment, PostDetail } from '@/core/@types/post';
 import GlobalContext from '@/core/context/global';
-import { getPostDetail } from '@/core/repository/post';
+import { createComment, getPostDetail } from '@/core/repository/post';
 import { useRouter } from 'next/navigation';
 
 export function usePostDetail(postId: string) {
@@ -25,9 +25,23 @@ export function usePostDetail(postId: string) {
     }
   };
 
+  const comment = async (postId: string, comment: string) => {
+    if (!comment.trim()) {
+      alert({ message: `Comment must not be empty`, severity: 'warning' });
+      throw Error('empty comment');
+    }
+    try {
+      await createComment(postId, comment);
+      await fetchPost(postId);
+    } catch (error) {
+      alert({ message: `${error}`, severity: 'error' });
+    }
+  };
+
   return {
     fetchPost,
     post,
     comments,
+    comment,
   };
 }
