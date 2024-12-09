@@ -1,6 +1,7 @@
 'use client';
 
 import { Avatar, Button, Dropdown, TextInput } from 'flowbite-react';
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { CheckIcon, MessageIcon, SearchIcon } from '@/components/icons';
@@ -144,7 +145,7 @@ export default function Home() {
       {posts && (
         <div className="rounded-xl bg-white mt-6">
           {posts.map((post, index) => (
-            <React.Fragment key={post.postId}>
+            <Link href={`/post/${post.postId}`} key={post.postId}>
               <div className="p-5 text-black">
                 <div className="flex items-center gap-2 mb-4">
                   <Avatar img={post.authorImageUrl} rounded />
@@ -170,7 +171,7 @@ export default function Home() {
                 </div>
               </div>
               {index !== posts.length - 1 && <hr className="border-gray-300" />}
-            </React.Fragment>
+            </Link>
           ))}
         </div>
       )}

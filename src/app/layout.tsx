@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import { PublicEnvScript } from 'next-runtime-env';
 import './globals.css';
 import GlobalContextProvider from '@/core/context/GlobalContextProvider';
+import NextTopLoader from 'nextjs-toploader';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -33,6 +34,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-grey-100`}
       >
+        <NextTopLoader
+          color="#49A569"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #49A569,0 0 5px #49A569"
+        />
         <GlobalContextProvider>{children}</GlobalContextProvider>
       </body>
     </html>
