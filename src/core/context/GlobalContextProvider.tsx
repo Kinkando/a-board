@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { Alert } from '@/core/@types/alert';
 import GlobalContext from '@/core/context/global';
-import AlertComponent from '@/core/components/shared/Alert';
+import AlertComponent from '@/components/shared/Alert';
+import BaseLayout from '@/components/layout/BaseLayout';
 import { useUser } from '@/core/hooks/user';
 
 export default function GlobalContextProvider({
@@ -31,7 +32,7 @@ export default function GlobalContextProvider({
         {...alert}
         onDismiss={() => setAlert((alert) => ({ ...alert, isOpen: false }))}
       />
-      {children}
+      <BaseLayout>{children}</BaseLayout>
     </GlobalContext.Provider>
   );
 }
