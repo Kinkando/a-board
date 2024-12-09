@@ -31,6 +31,7 @@
     "@types/react-dom": "^19",
     "eslint": "^8",
     "eslint-config-next": "15.0.4",
+    "flowbite-react": "^0.10.2",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
     "postcss": "^8",
