@@ -37,8 +37,14 @@ export default function Alert({
 
   return (
     <div className="fixed top-6 left-0 right-0 w-fit m-auto flex flex-col justify-start items-center z-[1000]">
-      <div className="mx-4 shadow-lg">
-        {isOpen && message && (
+      <div
+        className={
+          isOpen && message
+            ? 'opacity-1 ease-in duration-150 transition-all'
+            : 'opacity-0'
+        }
+      >
+        <div className="mx-4 shadow-lg">
           <AlertComponent
             color={_severity === 'error' ? 'red' : _severity}
             withBorderAccent
@@ -62,7 +68,7 @@ export default function Alert({
               <span className="mr-2">{_message}</span>
             </div>
           </AlertComponent>
-        )}
+        </div>
       </div>
     </div>
   );
