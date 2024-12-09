@@ -9,7 +9,6 @@ export const MenuIcon = (
     <path
       d="M3.96582 12.8037H21.9658M3.96582 6.80371H21.9658M3.96582 18.8037H21.9658"
       stroke="white"
-      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
