@@ -31,3 +31,19 @@ body {
 .button-success {
   @apply bg-success hover:!bg-success hover:brightness-75;
 }
+
+li[role='menuitem'] > button:hover:not(.inactive),
+li[role='menuitem'] > button.active {
+  @apply bg-green-100;
+}
+
+li[role='menuitem'] > button.inactive {
+  @apply cursor-not-allowed;
+}
+
+.input-search > div > input {
+  background-color: transparent;
+  border-width: 1px;
+  border-color: white;
+  @apply focus:border-green-300 focus:ring-green-300;
+}
