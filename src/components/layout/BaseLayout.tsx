@@ -41,9 +41,7 @@ export default function BaseLayout({ children, pathname }: BaseLayoutProps) {
         <div className="hidden lg:block lg:absolute left-0 top-[60px] w-[280px]">
           <Sidebar pathname={pathname} router={router} />
         </div>
-        <div className="block lg:absolute lg:min-w-[460px] lg:w-[calc(100vw-560px)] lg:left-1/2 lg:-translate-x-1/2 lg:min-h-[calc(100vh-60px)] lg:p-8">
-          {children}
-        </div>
+        {children}
       </div>
     </>
   );
