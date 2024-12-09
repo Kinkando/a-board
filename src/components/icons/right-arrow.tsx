@@ -1,4 +1,4 @@
-export const LeftArrow = (
+export const RightArrow = (
   <svg
     width="19"
     height="15"
