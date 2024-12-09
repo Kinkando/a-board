@@ -1,5 +1,5 @@
 import { HttpStatusCode } from 'axios';
-import { FilterPost, Post } from '@/core/@types/post';
+import { Comment, FilterPost, Post, PostDetail } from '@/core/@types/post';
 import client from '@/core/lib/api';
 
 export async function listPosts(params: FilterPost) {
@@ -8,6 +8,20 @@ export async function listPosts(params: FilterPost) {
     method: 'GET',
     params,
     signalID: 'LIST_POSTS',
+  });
+  if (status === HttpStatusCode.Ok) {
+    return data;
+  }
+  throw Error(error);
+}
+
+export async function getPostDetail(postId: string) {
+  const { data, status, error } = await client<{
+    post: PostDetail;
+    comments: Comment[];
+  }>({
+    url: `/post/${postId}`,
+    method: 'GET',
   });
   if (status === HttpStatusCode.Ok) {
     return data;

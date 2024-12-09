@@ -16,3 +16,31 @@ export interface FilterPost {
   search?: string;
   communityId?: number;
 }
+
+export interface PostDetail {
+  postId: string;
+  communityId: number;
+  communityName: string;
+  authorId: string;
+  authorName: string;
+  authorImageUrl?: string;
+  title: string;
+  content: string;
+  createdAt: Date;
+  updatedAt?: Date;
+  editable?: boolean;
+  deletable?: boolean;
+  commentCount: number;
+}
+
+export interface Comment {
+  commentId: string;
+  comment: string;
+  userId: string;
+  username: string;
+  userImageUrl?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  editable?: boolean;
+  deletable?: boolean;
+}
