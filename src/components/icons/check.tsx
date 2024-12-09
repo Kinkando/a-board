@@ -8,7 +8,7 @@ export const CheckIcon = (
   >
     <path
       d="M17.2244 5.80371L8.05778 14.9704L3.89111 10.8037"
-      stroke="#4A4A4A"
+      stroke="inherit"
       strokeLinecap="round"
       strokeLinejoin="round"
     />

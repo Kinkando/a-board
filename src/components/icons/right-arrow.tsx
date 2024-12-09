@@ -8,7 +8,7 @@ export const RightArrow = (
   >
     <path
       d="M1.10645 7.48804L17.1064 7.48804M17.1064 7.48804L11.1064 1.48804M17.1064 7.48804L11.1064 13.488"
-      stroke="#D8E9E4"
+      stroke="inherit"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
