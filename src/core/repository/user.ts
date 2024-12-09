@@ -1,10 +1,14 @@
 import { User } from '@/core/@types/user';
 import client from '@/core/lib/api';
+import { HttpStatusCode } from 'axios';
 
 export async function getUser() {
-  const { data } = await client<User>({
+  const { data, status, error } = await client<User>({
     url: '/user',
     method: 'GET',
   });
-  return data;
+  if (status === HttpStatusCode.Ok) {
+    return data;
+  }
+  throw Error(error);
 }

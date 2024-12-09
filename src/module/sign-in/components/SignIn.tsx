@@ -1,9 +1,16 @@
 'use client';
 
 import Image from 'next/image';
+import { useContext } from 'react';
 import SignInCard from './SignInCard';
+import GlobalContext from '@/core/context/global';
 
 export default function SignIn() {
+  const { isReady, user } = useContext(GlobalContext);
+  if (!isReady || user) {
+    return <></>;
+  }
+
   return (
     <div className="bg-green-500 flex flex-col-reverse lg:flex-row h-screen w-screen overflow-auto">
       <section className="flex flex-[1.5_2] h-full items-center justify-center p-4">

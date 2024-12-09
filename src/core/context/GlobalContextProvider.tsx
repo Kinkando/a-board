@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { Alert } from '@/core/@types/alert';
 import GlobalContext from '@/core/context/global';
-import AlertComponent from '@/components/shared/Alert';
-import BaseLayout from '@/components/layout/BaseLayout';
 import { useUser } from '@/core/hooks/user';
+import AlertComponent from '@/components/shared/Alert';
 
 export default function GlobalContextProvider({
   children,
@@ -18,6 +18,16 @@ export default function GlobalContextProvider({
     severity: 'info',
   });
   const { user, setUser, isReady } = useUser();
+
+  const { push } = useRouter();
+  const pathname = usePathname();
+
+  // auth guard
+  useEffect(() => {
+    if (isReady && user && pathname === '/sign-in') {
+      push('/');
+    }
+  }, [pathname, isReady, user]);
 
   return (
     <GlobalContext.Provider
@@ -32,7 +42,7 @@ export default function GlobalContextProvider({
         {...alert}
         onDismiss={() => setAlert((alert) => ({ ...alert, isOpen: false }))}
       />
-      <BaseLayout>{children}</BaseLayout>
+      {children}
     </GlobalContext.Provider>
   );
 }
