@@ -19,14 +19,16 @@ export default function Topbar({ pathname, user, router }: TopbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="flex items-center justify-between px-8 py-4 h-[60px] bg-green-500 gap-6">
-      <Image
-        src="/text.png"
-        alt="Sign In Text"
-        width={69}
-        height={24}
-        objectFit="cover"
-        priority
-      />
+      <Link href="/">
+        <Image
+          src="/text.png"
+          alt="Sign In Text"
+          width={69}
+          height={24}
+          objectFit="cover"
+          priority
+        />
+      </Link>
 
       {/* Sign In Button */}
       {!user && (
