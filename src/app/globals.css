@@ -19,3 +19,15 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.no-border {
+  @apply !ring-0 !border-none !outline-none;
+}
+
+.animate {
+  @apply ease-in duration-75 transition-all;
+}
+
+.button-success {
+  @apply bg-success hover:!bg-success hover:brightness-75;
+}

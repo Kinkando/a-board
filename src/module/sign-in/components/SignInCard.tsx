@@ -19,7 +19,7 @@ export default function SignInCard() {
           disabled={isSigningIn}
         />
         <Button
-          className="h-10 bg-success hover:!bg-success hover:brightness-75 ease-in duration-75 transition-all w-full !ring-0 !border-none !outline-none"
+          className="h-10 w-full button-success no-border animate"
           onClick={() => signIn(username)}
           disabled={isSigningIn}
         >
