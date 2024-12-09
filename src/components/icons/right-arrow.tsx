@@ -1,4 +1,4 @@
-export const RightArrow = (
+export const RightArrowIcon = (
   <svg
     width="19"
     height="15"

@@ -66,7 +66,7 @@ export default function Home() {
   }, [search, posts]);
 
   return (
-    <div className="pt-12 px-4 lg:pt-0 lg:px-0">
+    <div className="pt-12 pb-4 px-4 lg:pt-0 lg:px-0">
       {/* Toolbar Section */}
       <div className="flex max-[340px]:flex-col justify-between items-center min-h-10 gap-5">
         <div

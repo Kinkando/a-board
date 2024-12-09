@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { JSX, useState } from 'react';
 import { User } from '@/core/@types/user';
-import { MenuIcon, RightArrow } from '@/components/icons';
+import { MenuIcon, RightArrowIcon } from '@/components/icons';
 
 export type TopbarProps = {
   pathname: string;
@@ -65,7 +65,7 @@ export default function Topbar({ pathname, user, router }: TopbarProps) {
             className="cursor-pointer px-3 py-2 w-fit ml-1 stroke-2 stroke-white"
             onClick={() => setIsOpen(false)}
           >
-            {RightArrow}
+            {RightArrowIcon}
           </div>
 
           <section>
