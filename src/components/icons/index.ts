@@ -1,0 +1,9 @@
+export { BlogIcon } from './blog';
+export { CheckIcon } from './check';
+export { DeleteIcon } from './delete';
+export { EditIcon } from './edit';
+export { HomeIcon } from './home';
+export { LeftArrow } from './left-arrow';
+export { MenuIcon } from './menu';
+export { MessageIcon } from './message';
+export { SearchIcon } from './search';
