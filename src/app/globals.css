@@ -47,3 +47,7 @@ li[role='menuitem'] > button.inactive {
   border-color: white;
   @apply focus:border-green-300 focus:ring-green-300;
 }
+
+.input-text > div > input {
+  @apply focus:border-success focus:ring-success;
+}
