@@ -15,6 +15,8 @@ export interface Post {
 export interface FilterPost {
   search?: string;
   communityId?: number;
+  authorId?: string;
+  yourPost?: boolean;
 }
 
 export interface PostDetail {

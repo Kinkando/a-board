@@ -12,12 +12,14 @@ export type PostToolPanelProps = {
   posts: Post[];
   communities: Community[];
   getPosts: (filter: FilterPost) => Promise<void>;
+  yourPost?: boolean;
 };
 
 export default function PostToolPanel({
   posts,
   communities,
   getPosts,
+  yourPost,
 }: PostToolPanelProps) {
   const searchParams = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('search') ?? '');
@@ -32,7 +34,11 @@ export default function PostToolPanel({
 
   const fetchPosts = useCallback(async () => {
     replaceQueryParams(search, community);
-    await getPosts({ search, communityId: community?.id });
+    await getPosts({
+      search,
+      communityId: community?.id,
+      yourPost,
+    });
   }, [replaceQueryParams, search, community, getPosts]);
 
   useEffect(() => {
