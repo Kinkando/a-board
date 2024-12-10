@@ -33,9 +33,11 @@ export default function Topbar({ pathname, user, router }: TopbarProps) {
       {/* Sign In Button */}
       {!user && (
         <div className="hidden lg:block">
-          <Button className="h-10 w-[105px] button-success no-boder animate">
-            Sign In
-          </Button>
+          <Link href="/sign-in">
+            <Button className="h-10 w-[105px] button-success no-boder animate">
+              Sign In
+            </Button>
+          </Link>
         </div>
       )}
 
