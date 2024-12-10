@@ -6,9 +6,16 @@ import { Post } from '@/core/@types/post';
 export type PostProps = {
   post: Post;
   isAuthor?: boolean;
+  onEdit?: () => void;
+  onDelete?: () => void;
 };
 
-export default function PostCard({ post, isAuthor }: PostProps) {
+export default function PostCard({
+  post,
+  isAuthor,
+  onEdit,
+  onDelete,
+}: PostProps) {
   return (
     <div className="p-5 text-black">
       <div className="flex items-center gap-2 mb-4">
@@ -19,8 +26,12 @@ export default function PostCard({ post, isAuthor }: PostProps) {
 
         {isAuthor && (
           <div className="ml-auto flex items-center gap-4 stroke-green-300 stroke-[1.5]">
-            <div className="cursor-pointer">{EditIcon}</div>
-            <div className="cursor-pointer">{DeleteIcon}</div>
+            <div className="cursor-pointer" onClick={onEdit}>
+              {EditIcon}
+            </div>
+            <div className="cursor-pointer" onClick={onDelete}>
+              {DeleteIcon}
+            </div>
           </div>
         )}
       </div>
