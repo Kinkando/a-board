@@ -3,7 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { JSX, useState } from 'react';
 import { User } from '@/core/@types/user';
-import { MenuIcon, RightArrowIcon } from '@/components/icons';
+import {
+  LoginIcon,
+  LogoutIcon,
+  MenuIcon,
+  RightArrowIcon,
+} from '@/components/icons';
 
 export type TopbarProps = {
   pathname: string;
@@ -85,30 +90,53 @@ export default function Topbar({ pathname, user, router }: TopbarProps) {
           className="bg-green-500 py-8 px-4 space-y-9"
         >
           <div
-            className="cursor-pointer px-3 py-2 w-fit ml-1 stroke-2 stroke-white"
+            className="cursor-pointer px-3 py-2 w-fit ml-1 stroke-2 stroke-white h-8"
             onClick={() => setIsOpen(false)}
           >
             {RightArrowIcon}
           </div>
 
-          <section>
-            {router.map((router) => (
-              <Link
-                key={router.name}
-                href={router.path}
-                onClick={() => setIsOpen(false)}
-              >
-                <div
-                  className={
-                    'cursor-pointer flex items-center gap-3 px-3 py-2 stroke-white' +
-                    (pathname === router.path ? ' font-bold stroke-2' : '')
-                  }
+          <section className="flex flex-col justify-between h-[calc(100%-68px)]">
+            <section>
+              {router.map((router) => (
+                <Link
+                  key={router.name}
+                  href={router.path}
+                  onClick={() => setIsOpen(false)}
                 >
-                  {router.icon}
-                  <span>{router.name}</span>
+                  <div
+                    className={
+                      'cursor-pointer flex items-center gap-3 px-3 py-2 stroke-white' +
+                      (pathname === router.path ? ' font-bold stroke-2' : '')
+                    }
+                  >
+                    {router.icon}
+                    <span>{router.name}</span>
+                  </div>
+                </Link>
+              ))}
+            </section>
+
+            {!user && (
+              <Link href="/sign-in">
+                <div className="cursor-pointer flex items-center gap-3 px-3 py-2 stroke-white mb-auto">
+                  {LoginIcon}
+                  <span>Sign In</span>
                 </div>
               </Link>
-            ))}
+            )}
+
+            {user && (
+              <section>
+                <div
+                  className="cursor-pointer flex items-center gap-3 px-3 py-2 stroke-white mb-auto"
+                  onClick={signOut}
+                >
+                  {LogoutIcon}
+                  <span>Sign Out</span>
+                </div>
+              </section>
+            )}
           </section>
         </Drawer>
       </div>
