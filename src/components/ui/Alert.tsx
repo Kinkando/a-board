@@ -38,8 +38,8 @@ export default function Alert({
   return (
     <div
       className={
-        'fixed top-6 left-0 right-0 w-fit m-auto flex flex-col justify-start items-center z-[1000]' +
-        (!isOpen || !message ? ' -z-[1000]' : '')
+        'fixed top-6 left-0 right-0 w-fit m-auto flex flex-col justify-start items-center ' +
+        (!isOpen || !message ? '!-z-[1000]' : 'z-[1000]')
       }
     >
       <div
