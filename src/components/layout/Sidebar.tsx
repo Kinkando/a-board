@@ -12,7 +12,7 @@ export type SidebarProps = {
 
 export default function Sidebar({ pathname, router }: SidebarProps) {
   return (
-    <div className="py-8 px-4 text-black">
+    <div className="py-8 px-4 text-black min-h-[calc(100vh-60px)]">
       {router.map((router) => (
         <Link key={router.name} href={router.path}>
           <div

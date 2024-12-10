@@ -68,8 +68,8 @@ export default function PostDetail() {
   }
 
   return (
-    <div className="lg:absolute lg:left-[280px] lg:py-9 bg-white min-h-[calc(100vh-60px)] min-w-[calc(100vw-280px)]">
-      <div className="pt-6 px-4 pb-4 lg:pt-0 lg:px-0 lg:max-w-[calc(100vw-280px-200px)] lg:m-auto">
+    <div className="lg:py-9 bg-white min-h-[calc(100vh-60px)]">
+      <div className="pt-6 px-4 pb-4 lg:pt-0 w-full lg:m-auto lg:px-40">
         <div
           className="rounded-full bg-green-100 w-11 h-11 stroke-green-500 flex items-center justify-center stroke-2 cursor-pointer mb-10"
           onClick={back}

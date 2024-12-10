@@ -37,11 +37,11 @@ export default function BaseLayout({ children, pathname }: BaseLayoutProps) {
   return (
     <>
       <Topbar user={user} pathname={pathname} router={router} />
-      <div className="w-full h-[calc(100vh-60px)]">
-        <div className="hidden lg:block lg:absolute left-0 top-[60px] w-[280px]">
+      <div className="w-full h-[calc(100vh-60px)] lg:flex">
+        <div className="hidden lg:block min-w-[280px]">
           <Sidebar pathname={pathname} router={router} />
         </div>
-        {children}
+        <div className="w-full">{children}</div>
       </div>
     </>
   );
