@@ -40,15 +40,14 @@ export default function CommunityDropdown({
   return (
     <Dropdown
       label="Community"
-      color="success"
       inline={!outline}
       disabled={disabled}
       renderTrigger={
         outline
           ? () => (
               <Button
-                className="button-success no-border animate whitespace-nowrap w-full h-10 lg:w-fit"
-                outline
+                className="!ring-0 whitespace-nowrap w-full h-10 lg:w-fit"
+                color="green"
               >
                 <div className="flex items-center gap-2">
                   <span>{_community.name}</span>

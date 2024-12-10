@@ -75,9 +75,8 @@ export default function CommentPanel({
         ></Textarea>
         <div className="flex items-center justify-end gap-3">
           <Button
-            color="success"
-            className="no-border animate button-success"
-            outline
+            color="green"
+            className="!ring-0"
             onClick={closeComment}
             disabled={isLoading || !commentable}
           >
@@ -117,9 +116,8 @@ export default function CommentPanel({
         <Modal.Footer className="!border-t-0">
           <div className="flex flex-col gap-[10px] w-full">
             <Button
-              color="success"
-              className="no-border animate button-success"
-              outline
+              color="green"
+              className="!ring-0"
               onClick={closeComment}
               disabled={isLoading || !commentable}
             >

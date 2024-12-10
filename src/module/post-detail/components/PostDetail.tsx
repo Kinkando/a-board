@@ -41,12 +41,8 @@ export default function PostDetail() {
         <Post post={post} date={now} />
 
         <Button
-          className={
-            'my-6 button-success no-border animate' +
-            (isComment ? ' lg:hidden' : '')
-          }
-          outline
-          color="success"
+          className={'my-6 !ring-0' + (isComment ? ' lg:hidden' : '')}
+          color="green"
           onClick={() => setIsComment(true)}
           disabled={!user}
         >

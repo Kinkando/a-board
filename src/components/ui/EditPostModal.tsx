@@ -104,9 +104,8 @@ export default function EditPostModal({
       <Modal.Footer className="!border-t-0">
         <div className="flex flex-col gap-[10px] w-full lg:flex-row lg:justify-end">
           <Button
-            color="success"
-            className="no-border animate button-success"
-            outline
+            color="green"
+            className="!ring-0"
             onClick={onClose}
             disabled={isLoading}
           >
