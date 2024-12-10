@@ -1,4 +1,5 @@
 import { Button, Modal, Textarea, TextInput } from 'flowbite-react';
+import { useRouter } from 'next/navigation';
 import { useCallback, useContext, useState } from 'react';
 import CommunityDropdown from './CommunityDropdown';
 import { Community } from '@/core/@types/community';
@@ -9,21 +10,15 @@ export type CreatePostModalProps = {
   isOpen: boolean;
   onClose: () => void;
   communities: Community[];
-  onCreate: (data: {
-    postId: string;
-    title: string;
-    content: string;
-    communityId: number;
-  }) => void;
 };
 
 export default function CreatePostModal({
   isOpen,
   onClose,
   communities,
-  onCreate,
 }: CreatePostModalProps) {
   const { alert } = useContext(GlobalContext);
+  const { push } = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -50,14 +45,13 @@ export default function CreatePostModal({
         communityId: community.id,
       };
       const postId = await createPost(data);
-      onCreate({ ...data, postId });
+      push(`/post/${postId}`);
     } catch (error) {
+      setIsLoading(false);
       alert({
         message: `${error}`,
         severity: 'error',
       });
-    } finally {
-      setIsLoading(false);
     }
   }, [title, content, community]);
 

@@ -8,17 +8,7 @@ export default function CreatePost() {
   document.title = 'Create Post | a Board';
 
   const { communities } = usePost();
-  const { push, back } = useRouter();
+  const { back } = useRouter();
 
-  const onCreate = async (data: { postId: string }) => {
-    push(`/post/${data.postId}`);
-  };
-  return (
-    <CreatePostModal
-      communities={communities}
-      isOpen
-      onClose={back}
-      onCreate={onCreate}
-    />
-  );
+  return <CreatePostModal communities={communities} isOpen onClose={back} />;
 }
