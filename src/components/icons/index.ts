@@ -6,6 +6,8 @@ export { EditIcon } from './edit';
 export { HomeIcon } from './home';
 export { RightArrowIcon } from './right-arrow';
 export { LeftArrowIcon } from './left-arrow';
+export { LoginIcon } from './login';
+export { LogoutIcon } from './logout';
 export { MenuIcon } from './menu';
 export { MessageIcon } from './message';
 export { SearchIcon } from './search';
