@@ -10,6 +10,7 @@ export type CommunityDropdownProps = {
   community?: Community;
   onSelectCommunity: (community: Community) => void;
   outline?: boolean;
+  disabled?: boolean;
 };
 
 export default function CommunityDropdown({
@@ -17,6 +18,7 @@ export default function CommunityDropdown({
   community,
   onSelectCommunity,
   outline,
+  disabled,
 }: CommunityDropdownProps) {
   const [_community, _setCommunity] = useState<Community>(undefinedCommunity);
 
@@ -40,6 +42,7 @@ export default function CommunityDropdown({
       label="Community"
       color="success"
       inline={!outline}
+      disabled={disabled}
       renderTrigger={
         outline
           ? () => (
