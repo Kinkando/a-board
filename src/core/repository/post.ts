@@ -44,6 +44,31 @@ export async function createComment(postId: string, comment: string) {
   throw Error(error);
 }
 
+export async function updateComment(
+  postId: string,
+  commentId: string,
+  comment: string,
+) {
+  const { status, error } = await client({
+    url: `/post/${postId}/comment/${commentId}`,
+    method: 'PATCH',
+    data: { comment },
+  });
+  if (status !== HttpStatusCode.NoContent) {
+    throw Error(error);
+  }
+}
+
+export async function deleteComment(postId: string, commentId: string) {
+  const { status, error } = await client({
+    url: `/post/${postId}/comment/${commentId}`,
+    method: 'DELETE',
+  });
+  if (status !== HttpStatusCode.NoContent) {
+    throw Error(error);
+  }
+}
+
 export async function createPost(post: {
   title: string;
   content: string;
