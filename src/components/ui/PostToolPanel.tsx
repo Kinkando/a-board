@@ -5,6 +5,7 @@ import { CheckIcon, SearchIcon } from '@/components/icons';
 import { Community } from '@/core/@types/community';
 import { FilterPost, Post } from '@/core/@types/post';
 import { usePostToolPanel } from '@/core/hooks/postToolPanel';
+import Link from 'next/link';
 
 const undefinedCommunity: Community = { id: 0, name: '' };
 
@@ -119,14 +120,16 @@ export default function PostToolPanel({
         </Dropdown>
       </div>
 
-      <Button
-        className={
-          'button-success no-border animate whitespace-nowrap max-[340px]:w-full h-10' +
-          (isSearch ? ' min-[340px]:hidden sm:block' : '')
-        }
-      >
-        Create +
-      </Button>
+      <Link href="/post/create">
+        <Button
+          className={
+            'button-success no-border animate whitespace-nowrap max-[340px]:w-full h-10' +
+            (isSearch ? ' min-[340px]:hidden sm:block' : '')
+          }
+        >
+          Create +
+        </Button>
+      </Link>
     </div>
   );
 }
