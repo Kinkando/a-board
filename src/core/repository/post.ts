@@ -44,6 +44,22 @@ export async function createComment(postId: string, comment: string) {
   throw Error(error);
 }
 
+export async function createPost(post: {
+  title: string;
+  content: string;
+  communityId: number;
+}) {
+  const { status, error, data } = await client<{ postId: string }>({
+    url: `/post`,
+    method: 'POST',
+    data: post,
+  });
+  if (status === HttpStatusCode.Ok) {
+    return data.postId;
+  }
+  throw Error(error);
+}
+
 export async function updatePost(post: Post) {
   const { status, error } = await client({
     url: `/post/${post.postId}`,
