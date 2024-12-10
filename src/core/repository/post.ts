@@ -43,3 +43,24 @@ export async function createComment(postId: string, comment: string) {
   }
   throw Error(error);
 }
+
+export async function updatePost(post: Post) {
+  const { status, error } = await client({
+    url: `/post/${post.postId}`,
+    method: 'PATCH',
+    data: post,
+  });
+  if (status !== HttpStatusCode.NoContent) {
+    throw Error(error);
+  }
+}
+
+export async function deletePost(postId: string) {
+  const { status, error } = await client({
+    url: `/post/${postId}`,
+    method: 'DELETE',
+  });
+  if (status !== HttpStatusCode.NoContent) {
+    throw Error(error);
+  }
+}

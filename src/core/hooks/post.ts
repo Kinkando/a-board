@@ -42,6 +42,7 @@ export function usePost() {
   return {
     communities,
     posts,
+    setPosts,
     fetchPosts,
   };
 }
