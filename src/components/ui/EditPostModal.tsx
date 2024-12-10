@@ -39,12 +39,24 @@ export default function EditPostModal({
   }, [post, isOpen]);
 
   const edit = useCallback(async () => {
+    if (!community.id) {
+      alert({ message: 'Community is required', severity: 'warning' });
+      return;
+    }
+    if (!title.trim()) {
+      alert({ message: 'Title is required', severity: 'warning' });
+      return;
+    }
+    if (!content.trim()) {
+      alert({ message: 'Content is required', severity: 'warning' });
+      return;
+    }
     try {
       setIsLoading(true);
       const data: Post = {
         ...post,
-        title,
-        content,
+        title: title.trim(),
+        content: content.trim(),
         communityId: community.id,
         communityName: community.name,
       };
