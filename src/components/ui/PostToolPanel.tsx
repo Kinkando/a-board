@@ -94,7 +94,6 @@ export default function PostToolPanel({
           communities={communities}
           community={community}
           onSelectCommunity={setCommunity}
-          inline
         />
       </div>
 

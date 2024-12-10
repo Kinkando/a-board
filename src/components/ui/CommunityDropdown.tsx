@@ -1,15 +1,14 @@
-import { Dropdown } from 'flowbite-react';
+import { Button, Dropdown } from 'flowbite-react';
 import { useEffect, useState } from 'react';
-import { CheckIcon } from '@/components/icons';
+import { CheckIcon, DownArrowIcon } from '@/components/icons';
 import { Community } from '@/core/@types/community';
 
-const undefinedCommunity: Community = { id: 0, name: '' };
+const undefinedCommunity: Community = { id: 0, name: 'Choose a community' };
 
 export type CommunityDropdownProps = {
   communities: Community[];
   community?: Community;
   onSelectCommunity: (community: Community) => void;
-  inline?: boolean;
   outline?: boolean;
 };
 
@@ -17,7 +16,6 @@ export default function CommunityDropdown({
   communities,
   community,
   onSelectCommunity,
-  inline,
   outline,
 }: CommunityDropdownProps) {
   const [_community, _setCommunity] = useState<Community>(undefinedCommunity);
@@ -38,11 +36,30 @@ export default function CommunityDropdown({
   }, [community]);
 
   return (
-    <Dropdown label="Community" inline={inline} outline={outline}>
+    <Dropdown
+      label="Community"
+      color="success"
+      inline={!outline}
+      renderTrigger={
+        outline
+          ? () => (
+              <Button
+                className="button-success no-border animate whitespace-nowrap w-full h-10 lg:w-fit"
+                outline
+              >
+                <div className="flex items-center gap-2">
+                  <span>{_community.name}</span>
+                  {DownArrowIcon}
+                </div>
+              </Button>
+            )
+          : undefined
+      }
+    >
       {!communities.length && (
         <Dropdown.Item className="inactive">
           <div className="min-w-[200px] text-start flex items-center gap-4 justify-between">
-            No Community
+            {undefinedCommunity.name}
           </div>
         </Dropdown.Item>
       )}
