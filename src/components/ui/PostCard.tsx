@@ -1,4 +1,5 @@
 import { Avatar } from 'flowbite-react';
+import Link from 'next/link';
 import { DeleteIcon, EditIcon, MessageIcon } from '@/components/icons';
 import { Post } from '@/core/@types/post';
 
@@ -28,9 +29,19 @@ export default function PostCard({ post, isAuthor }: PostProps) {
         {post.communityName}
       </div>
 
-      <div className="font-semibold text-base line-clamp-1">
-        <p className="post">{post.title}</p>
-      </div>
+      {isAuthor && (
+        <Link href={`/post/${post.postId}`}>
+          <div className="font-semibold text-base line-clamp-1">
+            <p className="post">{post.title}</p>
+          </div>
+        </Link>
+      )}
+
+      {!isAuthor && (
+        <div className="font-semibold text-base line-clamp-1">
+          <p className="post">{post.title}</p>
+        </div>
+      )}
 
       <div className="text-sm line-clamp-2 mb-[10px]">
         <p className="post">{post.content}</p>
