@@ -2,8 +2,9 @@
 
 import { Button } from 'flowbite-react';
 import { useParams, useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { LeftArrowIcon } from '@/components/icons';
+import GlobalContext from '@/core/context/global';
 import { usePostDetail } from '@/module/post-detail/hooks/postDetail';
 import Comment from './Comment';
 import CommentPanel from './CommentPanel';
@@ -17,6 +18,7 @@ export default function PostDetail() {
   const { back } = useRouter();
   const { post, comments, comment: onCommentPost } = usePostDetail(postId);
 
+  const { user } = useContext(GlobalContext);
   const [isComment, setIsComment] = useState(false);
 
   if (!post) {
@@ -43,6 +45,7 @@ export default function PostDetail() {
           outline
           color="success"
           onClick={() => setIsComment(true)}
+          disabled={!user}
         >
           Add Comments
         </Button>
@@ -53,6 +56,7 @@ export default function PostDetail() {
           postId={postId}
           onSubmit={() => setIsComment(false)}
           onCommentPost={onCommentPost}
+          commentable={!!user}
         />
 
         <div className="space-y-6">

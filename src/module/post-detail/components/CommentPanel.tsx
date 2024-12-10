@@ -7,6 +7,7 @@ export type CommentPanelProps = {
   onCloseComment: () => void;
   onCommentPost: (postId: string, comment: string) => Promise<void>;
   onSubmit: (comment: string) => void;
+  commentable?: boolean;
 };
 
 export default function CommentPanel({
@@ -15,6 +16,7 @@ export default function CommentPanel({
   onCloseComment,
   onCommentPost,
   onSubmit,
+  commentable,
 }: CommentPanelProps) {
   const [comment, setComment] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -69,7 +71,7 @@ export default function CommentPanel({
           rows={4}
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          disabled={isLoading}
+          disabled={isLoading || !commentable}
         ></Textarea>
         <div className="flex items-center justify-end gap-3">
           <Button
@@ -77,7 +79,7 @@ export default function CommentPanel({
             className="no-border animate button-success"
             outline
             onClick={closeComment}
-            disabled={isLoading}
+            disabled={isLoading || !commentable}
           >
             Cancel
           </Button>
@@ -86,7 +88,7 @@ export default function CommentPanel({
             className="no-border animate button-success"
             onClick={() => onComment(postId, comment)}
             isProcessing={isLoading}
-            disabled={isLoading}
+            disabled={isLoading || !commentable}
           >
             Post
           </Button>
@@ -109,7 +111,7 @@ export default function CommentPanel({
             rows={4}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            disabled={isLoading}
+            disabled={isLoading || !commentable}
           ></Textarea>
         </Modal.Body>
         <Modal.Footer className="!border-t-0">
@@ -119,7 +121,7 @@ export default function CommentPanel({
               className="no-border animate button-success"
               outline
               onClick={closeComment}
-              disabled={isLoading}
+              disabled={isLoading || !commentable}
             >
               Cancel
             </Button>
@@ -128,7 +130,7 @@ export default function CommentPanel({
               className="no-border animate button-success"
               onClick={() => onComment(postId, comment)}
               isProcessing={isLoading}
-              disabled={isLoading}
+              disabled={isLoading || !commentable}
             >
               Post
             </Button>
