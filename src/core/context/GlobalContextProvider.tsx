@@ -43,7 +43,7 @@ export default function GlobalContextProvider({
         {...alert}
         onDismiss={() => setAlert((alert) => ({ ...alert, isOpen: false }))}
       />
-      <BaseLayout pathname={pathname}>{children}</BaseLayout>
+      {isReady && <BaseLayout pathname={pathname}>{children}</BaseLayout>}
     </GlobalContext.Provider>
   );
 }
