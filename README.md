@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Setup Instructions
 
-## Getting Started
+Follow the steps below to set up the project locally:
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. Install Dependencies
+After cloning the repository, install the project dependencies using `pnpm`:
+```sh
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Configure Environment Variables
+Create a `.env` file in the root directory of the project. You can either:
+- Copy the contents of `.env.example` into a new `.env` file, or
+- Rename `.env.example` to `.env`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the Server Locally
+To run the server locally, use the following command:
+```sh
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Build and Start the Application
+To build the application, run:
+```sh
+pnpm build
+```
+Once the build is complete, you can start the application using:
+```sh
+pnpm start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### Related Packages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `axios`:
+axios is a promise-based HTTP client for making API requests. It simplifies sending HTTP requests from the browser or Node.js. It also supports request and response interceptors, which can be used to automatically handle authentication (e.g., refreshing expired sessions after receiving a 401 Unauthorized response).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `dayjs`:
+dayjs is a lightweight and fast date manipulation library. It is used to transform and format dates in various formats, providing a simple API for working with dates and times. It's often used as a more efficient alternative to moment.js.
 
-## Deploy on Vercel
+- `husky` and `lint-staged`:
+husky is used to set up Git hooks, enabling automated processes like linting before committing code. lint-staged works alongside husky to run linters only on staged files, ensuring code quality is maintained without slowing down the entire repository. Together, they help enforce coding standards before code is committed to the repository.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `next-runtime-env`:
+next-runtime-env allows you to access environment variables at runtime, even on the client-side in a Next.js application. This package ensures that environment variables can be made available not only at build time but also at runtime, allowing you to adjust the environment-specific configurations dynamically during client-side navigation or API calls.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `nextjs-toploader`:
+nextjs-toploader provides a top-loading progress bar during page navigation in a Next.js application. It shows a visual loading indicator at the top of the page whenever the user navigates between pages, improving the user experience by indicating ongoing page transitions.
+
+- `flowbite-react`:
+flowbite-react is a set of pre-built React components that are designed to work seamlessly with Tailwind CSS. These components are styled in a modern UI fashion, making it easier to build visually appealing and responsive web applications with minimal effort.
+
+- `tailwindcss`:
+tailwindcss is a utility-first CSS framework that allows developers to create custom designs using predefined classes. It promotes rapid styling by providing utility classes for spacing, typography, layout, and more. It also supports responsive design, making it easy to create layouts that adapt to different screen sizes and devices.
