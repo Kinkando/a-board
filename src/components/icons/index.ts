@@ -1,6 +1,7 @@
 export { BlogIcon } from './blog';
 export { CheckIcon } from './check';
 export { DeleteIcon } from './delete';
+export { DownArrowIcon } from './down-arrow';
 export { EditIcon } from './edit';
 export { HomeIcon } from './home';
 export { RightArrowIcon } from './right-arrow';
