@@ -49,10 +49,11 @@ export default function Alert({
             : 'opacity-0'
         }
       >
-        <div className="mx-4 shadow-lg">
+        <div className="mx-4">
           <AlertComponent
             color={_severity === 'error' ? 'red' : _severity}
             withBorderAccent
+            className="shadow-lg"
           >
             <div className="flex items-center gap-2">
               <span slot="icon">
