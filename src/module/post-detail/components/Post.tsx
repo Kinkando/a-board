@@ -5,9 +5,10 @@ import { timeRange } from '@/core/util/date-time';
 
 export type PostProps = {
   post: PostModel;
+  date: Date;
 };
 
-export default function Post({ post }: PostProps) {
+export default function Post({ post, date }: PostProps) {
   return (
     <div className="text-black space-y-4">
       <div className="flex items-center gap-2">
@@ -17,7 +18,7 @@ export default function Post({ post }: PostProps) {
             {post.authorName}
           </p>
           <p className="text-grey-300 text-xs whitespace-nowrap text-ellipsis overflow-hidden max-[300px]:w-full">
-            {timeRange(post.createdAt)}
+            {timeRange(post.createdAt, date)}
           </p>
         </div>
       </div>

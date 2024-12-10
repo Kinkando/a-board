@@ -4,9 +4,10 @@ import { timeRange } from '@/core/util/date-time';
 
 export type CommentProps = {
   comment: CommentModel;
+  date: Date;
 };
 
-export default function Comment({ comment }: CommentProps) {
+export default function Comment({ comment, date }: CommentProps) {
   return (
     <>
       <div className="flex items-center gap-2">
@@ -16,7 +17,7 @@ export default function Comment({ comment }: CommentProps) {
             {comment.username}
           </p>
           <p className="text-grey-300 text-xs whitespace-nowrap text-ellipsis overflow-hidden max-[300px]:w-full">
-            {timeRange(comment.createdAt)}
+            {timeRange(comment.createdAt, date)}
           </p>
         </div>
       </div>

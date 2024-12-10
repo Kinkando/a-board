@@ -2,30 +2,22 @@
 
 import { Button } from 'flowbite-react';
 import { useParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { LeftArrowIcon } from '@/components/icons';
 import { usePostDetail } from '@/module/post-detail/hooks/postDetail';
 import Comment from './Comment';
 import CommentPanel from './CommentPanel';
 import Post from './Post';
 
+const now = new Date();
+
 export default function PostDetail() {
   const params = useParams();
   const postId = params.postId as string;
-  const { back, refresh } = useRouter();
+  const { back } = useRouter();
   const { post, comments, comment: onCommentPost } = usePostDetail(postId);
 
   const [isComment, setIsComment] = useState(false);
-
-  // Refresh the current route, so the children (and nearby components) will be refreshed
-  useEffect(() => {
-    const timer = setInterval(() => {
-      refresh();
-    }, 1000);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
 
   if (!post) {
     return <></>;
@@ -41,7 +33,7 @@ export default function PostDetail() {
           {LeftArrowIcon}
         </div>
 
-        <Post post={post} />
+        <Post post={post} date={now} />
 
         <Button
           className={
@@ -66,7 +58,7 @@ export default function PostDetail() {
         <div className="space-y-6">
           {comments.map((comment) => (
             <div key={comment.commentId} className="space-y-2">
-              <Comment comment={comment} />
+              <Comment comment={comment} date={now} />
             </div>
           ))}
         </div>

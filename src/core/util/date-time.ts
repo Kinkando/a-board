@@ -5,15 +5,15 @@ import 'dayjs/locale/en';
 dayjs.extend(relativeTime);
 dayjs.locale('en');
 
-export function timeRange(dateTime: Date, withoutSuffix = false) {
-  const suffix = withoutSuffix ? '' : 'ago';
-  const second = dayjs(new Date()).diff(dateTime, 'second');
-  if (second < 60 && second > 2) {
-    return `${second} second ${suffix}`;
-  } else if (second <= 2) {
+export function timeRange(dateTime: Date, fromDateTime?: Date) {
+  const suffix = 'ago';
+  const now = new Date();
+  const date = fromDateTime && fromDateTime < now ? fromDateTime : now;
+  const second = dayjs(date).diff(dateTime, 'second');
+  if (second < 60) {
     return `a few seconds ${suffix}`;
   }
-  return dayjs(dateTime).fromNow(withoutSuffix);
+  return dayjs(dateTime).fromNow();
 }
 
 export function timeRangeDate(dateTime: Date) {
