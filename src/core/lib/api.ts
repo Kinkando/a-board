@@ -8,8 +8,6 @@ import config from '@/config/config';
 import { APIResponse } from '@/core/@types/api';
 import { refreshToken } from '@/core/repository/authen';
 
-const loginRequiredPaths = ['/post/create'];
-
 const axiosController: Controller = {};
 
 interface Controller {
@@ -59,9 +57,6 @@ instance.interceptors.response.use(
       if (config._isRefreshing) {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
-        if (loginRequiredPaths.includes(window.location.href)) {
-          window.location.href = '/login';
-        }
         return Promise.reject(error);
       }
       config._isRefreshing = true;

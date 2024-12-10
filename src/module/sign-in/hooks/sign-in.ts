@@ -1,5 +1,4 @@
 import { AxiosError } from 'axios';
-import { useRouter } from 'next/navigation';
 import { useCallback, useContext, useState } from 'react';
 import GlobalContext from '@/core/context/global';
 import { login } from '@/core/repository/authen';
@@ -7,7 +6,6 @@ import { getUser } from '@/core/repository/user';
 
 export function useSignIn() {
   const { alert, setUser } = useContext(GlobalContext);
-  const { push } = useRouter();
   const [isSigningIn, setIsSigningIn] = useState(false);
 
   const signIn = useCallback(async (username: string) => {
@@ -26,7 +24,6 @@ export function useSignIn() {
 
       const user = await getUser();
       setUser(user);
-      push('/');
     } catch (error) {
       let err = `${error}`;
       if (error instanceof AxiosError && error.response) {
