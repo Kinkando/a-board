@@ -22,7 +22,10 @@ export default function PostDetail() {
   const [isComment, setIsComment] = useState(false);
 
   if (!post) {
+    document.title = 'Post Detail | a Board';
     return <></>;
+  } else {
+    document.title = `${post.title} | Post | a Board`;
   }
 
   return (

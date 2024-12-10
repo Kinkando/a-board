@@ -9,6 +9,7 @@ import { Post } from '@/core/@types/post';
 import DeletePostModal from '@/components/ui/DeletePostModal';
 
 export default function OurBlog() {
+  document.title = 'Our Blog | a Board';
   const { posts, setPosts, communities, fetchPosts } = usePost();
   const [openModal, setOpenModal] = useState<'edit' | 'delete' | 'closed'>(
     'closed',

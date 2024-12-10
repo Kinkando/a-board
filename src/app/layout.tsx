@@ -29,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <title>a Board</title>
         <PublicEnvScript />
       </head>
       <body

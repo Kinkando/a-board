@@ -6,6 +6,8 @@ import PostToolPanel from '@/components/ui/PostToolPanel';
 import { usePost } from '@/core/hooks/post';
 
 export default function Home() {
+  document.title = 'Home | a Board';
+
   const { posts, communities, fetchPosts } = usePost();
 
   return (
