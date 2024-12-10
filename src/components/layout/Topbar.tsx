@@ -1,4 +1,4 @@
-import { Avatar, Button, Drawer } from 'flowbite-react';
+import { Avatar, Button, Drawer, Dropdown } from 'flowbite-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { JSX, useState } from 'react';
@@ -17,6 +17,13 @@ export type TopbarProps = {
 
 export default function Topbar({ pathname, user, router }: TopbarProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const signOut = () => {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    window.location.reload();
+  };
+
   return (
     <div className="flex items-center justify-between px-8 py-4 h-[60px] bg-green-500 gap-6">
       <Link href="/">
@@ -34,7 +41,7 @@ export default function Topbar({ pathname, user, router }: TopbarProps) {
       {!user && (
         <div className="hidden lg:block">
           <Link href="/sign-in">
-            <Button className="h-10 w-[105px] button-success no-boder animate">
+            <Button className="h-10 w-[105px] button-success no-border animate">
               Sign In
             </Button>
           </Link>
@@ -47,7 +54,19 @@ export default function Topbar({ pathname, user, router }: TopbarProps) {
           <div className="text-ellipsis overflow-hidden whitespace-nowrap w-fit">
             {user.username}
           </div>
-          <Avatar rounded img={user.profileImageUrl} />
+          <Dropdown
+            label=""
+            dismissOnClick
+            renderTrigger={() => (
+              <Avatar
+                className="cursor-pointer"
+                rounded
+                img={user.profileImageUrl}
+              />
+            )}
+          >
+            <Dropdown.Item onClick={signOut}>Sign Out</Dropdown.Item>
+          </Dropdown>
         </div>
       )}
 
