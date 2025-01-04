@@ -41,6 +41,7 @@ export function usePostDetail(postId: string) {
   return {
     fetchPost,
     post,
+    setPost,
     comments,
     setComments,
     comment,

@@ -21,6 +21,7 @@ export default function PostDetail() {
   const { back } = useRouter();
   const {
     post,
+    setPost,
     comments,
     setComments,
     comment: onCommentPost,
@@ -52,6 +53,7 @@ export default function PostDetail() {
 
   const onDelete = (_: string, commentId: string) => {
     setSelectedComment(undefined);
+    setPost((post) => post && { ...post, commentCount: post.commentCount - 1 });
     setComments((comments) =>
       comments.filter((comment) => comment.commentId !== commentId),
     );
